@@ -173,9 +173,9 @@ Blockly.Workspace.prototype.getBubbleCanvas = function() {
  */
 Blockly.Workspace.prototype.addTopBlock = function(block) {
   this.topBlocks_.push(block);
-  if (Blockly.Realtime.isEnabled() && this == Blockly.mainWorkspace) {
-    Blockly.Realtime.addTopBlock(block);
-  }
+//  if (Blockly.Realtime.isEnabled() && this == Blockly.mainWorkspace) {
+//    Blockly.Realtime.addTopBlock(block);
+//  }
   this.fireChangeEvent();
 };
 
@@ -195,9 +195,9 @@ Blockly.Workspace.prototype.removeTopBlock = function(block) {
   if (!found) {
     throw 'Block not present in workspace\'s list of top-most blocks.';
   }
-  if (Blockly.Realtime.isEnabled() && this == Blockly.mainWorkspace) {
-    Blockly.Realtime.removeTopBlock(block);
-  }
+//  if (Blockly.Realtime.isEnabled() && this == Blockly.mainWorkspace) {
+//    Blockly.Realtime.removeTopBlock(block);
+//  }
   this.fireChangeEvent();
 };
 

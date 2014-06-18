@@ -40,7 +40,7 @@ goog.require('Blockly.FieldVariable');
 goog.require('Blockly.Generator');
 goog.require('Blockly.Msg');
 goog.require('Blockly.Procedures');
-goog.require('Blockly.Realtime');
+//goog.require('Blockly.Realtime');
 goog.require('Blockly.Toolbox');
 goog.require('Blockly.WidgetDiv');
 goog.require('Blockly.Workspace');
@@ -700,11 +700,11 @@ Blockly.setMainWorkspaceMetrics_ = function(xyRatio) {
  * @param {function()} cmdThunk A function representing the command execution.
  */
 Blockly.doCommand = function(cmdThunk) {
-  if (Blockly.Realtime.isEnabled) {
-    Blockly.Realtime.doCommand(cmdThunk);
-  } else {
+//  if (Blockly.Realtime.isEnabled) {
+//    Blockly.Realtime.doCommand(cmdThunk);
+//  } else {
     cmdThunk();
-  }
+//  }
 };
 
 /**

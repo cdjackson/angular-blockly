@@ -48,15 +48,15 @@ Blockly.inject = function(container, opt_options) {
     Blockly.createDom_(container);
     Blockly.init_();
   };
-  if (Blockly.enableRealtime) {
-    var realtimeElement = document.getElementById('realtime');
-    if (realtimeElement) {
-      realtimeElement.style.display = 'block';
-    }
-    Blockly.Realtime.startRealtime(startUi, container, Blockly.realtimeOptions);
-  } else {
+//  if (Blockly.enableRealtime) {
+//    var realtimeElement = document.getElementById('realtime');
+//    if (realtimeElement) {
+//      realtimeElement.style.display = 'block';
+//    }
+//    Blockly.Realtime.startRealtime(startUi, container, Blockly.realtimeOptions);
+//  } else {
     startUi();
-  }
+//  }
 };
 
 /**

@@ -3,16 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="1cb7e4ec-3a67-4331-b2d6-e9f49b0c3665" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/core/json.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/block.js" afterPath="$PROJECT_DIR$/static/core/block.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/blockly.js" afterPath="$PROJECT_DIR$/static/core/blockly.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/blockly_compressed.js" afterPath="$PROJECT_DIR$/static/blockly_compressed.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/blockly_uncompressed.js" afterPath="$PROJECT_DIR$/static/blockly_uncompressed.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/cs.js" afterPath="$PROJECT_DIR$/static/msg/js/cs.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/css.js" afterPath="$PROJECT_DIR$/static/core/css.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/field_colour.js" afterPath="$PROJECT_DIR$/static/core/field_colour.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/he.js" afterPath="$PROJECT_DIR$/static/msg/js/he.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/hu.js" afterPath="$PROJECT_DIR$/static/msg/js/hu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/inject.js" afterPath="$PROJECT_DIR$/static/core/inject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/nl.js" afterPath="$PROJECT_DIR$/static/msg/js/nl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/pl.js" afterPath="$PROJECT_DIR$/static/msg/js/pl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/pt-br.js" afterPath="$PROJECT_DIR$/static/msg/js/pt-br.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/pt.js" afterPath="$PROJECT_DIR$/static/msg/js/pt.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/msg/js/vi.js" afterPath="$PROJECT_DIR$/static/msg/js/vi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/core/workspace.js" afterPath="$PROJECT_DIR$/static/core/workspace.js" />
     </list>
     <ignored path="blockly.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,14 +65,76 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="xml.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="xml.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/core/xml.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5840707" vertical-offset="5547" max-vertical-offset="6300">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5547" max-vertical-offset="6300">
               <caret line="27" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="realtime-client-utils.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/core/realtime-client-utils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4377" max-vertical-offset="7560">
+              <caret line="366" column="10" selection-start-line="366" selection-start-column="10" selection-end-line="366" selection-end-column="10" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/core/workspace.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2537" max-vertical-offset="5805">
+              <caret line="199" column="2" selection-start-line="199" selection-start-column="2" selection-end-line="199" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inject.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/core/inject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="332" max-vertical-offset="6570">
+              <caret line="58" column="2" selection-start-line="58" selection-start-column="2" selection-end-line="58" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="field_colour.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/core/field_colour.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="2595">
+              <caret line="93" column="2" selection-start-line="93" selection-start-column="2" selection-end-line="93" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blockly.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/core/blockly.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="10119" max-vertical-offset="10935">
+              <caret line="706" column="2" selection-start-line="706" selection-start-column="2" selection-end-line="706" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="block.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/core/block.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71631205" vertical-offset="27387" max-vertical-offset="27810">
+              <caret line="1864" column="2" selection-start-line="1864" selection-start-column="2" selection-end-line="1864" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,6 +152,11 @@
         <option value="$PROJECT_DIR$/core/css.js" />
         <option value="$PROJECT_DIR$/static/core/css.js" />
         <option value="$PROJECT_DIR$/static/core/json.js" />
+        <option value="$PROJECT_DIR$/static/core/workspace.js" />
+        <option value="$PROJECT_DIR$/static/core/inject.js" />
+        <option value="$PROJECT_DIR$/static/core/field_colour.js" />
+        <option value="$PROJECT_DIR$/static/core/blockly.js" />
+        <option value="$PROJECT_DIR$/static/core/block.js" />
       </list>
     </option>
   </component>
@@ -266,6 +339,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286119" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -276,7 +350,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -325,11 +398,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/core/xml.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5840707" vertical-offset="5547" max-vertical-offset="6300">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5547" max-vertical-offset="6300">
           <caret line="27" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/realtime-client-utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4377" max-vertical-offset="7560">
+          <caret line="366" column="10" selection-start-line="366" selection-start-column="10" selection-end-line="366" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/workspace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2537" max-vertical-offset="5805">
+          <caret line="199" column="2" selection-start-line="199" selection-start-column="2" selection-end-line="199" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/inject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="332" max-vertical-offset="6570">
+          <caret line="58" column="2" selection-start-line="58" selection-start-column="2" selection-end-line="58" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/field_colour.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="2595">
+          <caret line="93" column="2" selection-start-line="93" selection-start-column="2" selection-end-line="93" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/blockly.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10119" max-vertical-offset="10935">
+          <caret line="706" column="2" selection-start-line="706" selection-start-column="2" selection-end-line="706" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/block.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71631205" vertical-offset="27387" max-vertical-offset="27810">
+          <caret line="1864" column="2" selection-start-line="1864" selection-start-column="2" selection-end-line="1864" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>

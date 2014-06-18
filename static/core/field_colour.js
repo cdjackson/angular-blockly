@@ -91,7 +91,7 @@ Blockly.FieldColour.prototype.setValue = function(colour) {
   if (this.sourceBlock_ && this.sourceBlock_.rendered) {
     // Since we're not re-rendering we need to explicitly call
     // Blockly.Realtime.blockChanged()
-    Blockly.Realtime.blockChanged(this.sourceBlock_);
+//    Blockly.Realtime.blockChanged(this.sourceBlock_);
     this.sourceBlock_.workspace.fireChangeEvent();
   }
 };
