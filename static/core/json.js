@@ -340,4 +340,6 @@ Blockly.Json.deleteNext = function (jsonBlock) {
 };
 
 // Export symbols that would otherwise be renamed by Closure compiler.
-Blockly['Json'] = Blockly.Xml;
+Blockly['Json'] = Blockly.Json;
+Blockly.Json['getWorkspace'] = Blockly.Json.getWorkspace;
+Blockly.Json['setWorkspace'] = Blockly.Json.setWorkspace;

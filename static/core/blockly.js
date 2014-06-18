@@ -39,6 +39,7 @@ goog.require('Blockly.FieldTextInput');
 goog.require('Blockly.FieldVariable');
 goog.require('Blockly.Generator');
 goog.require('Blockly.Msg');
+goog.require('Blockly.Json');
 goog.require('Blockly.Procedures');
 //goog.require('Blockly.Realtime');
 goog.require('Blockly.Toolbox');

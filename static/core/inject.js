@@ -118,8 +118,8 @@ Blockly.parseOptions_ = function(options) {
       hasScrollbars = true;
     }
   }
-  var enableRealtime = !!options['realtime'];
-  var realtimeOptions = enableRealtime ? options['realtimeOptions'] : undefined;
+//  var enableRealtime = !!options['realtime'];
+//  var realtimeOptions = enableRealtime ? options['realtimeOptions'] : undefined;
   return {
     RTL: !!options['rtl'],
     collapse: hasCollapse,
@@ -129,9 +129,9 @@ Blockly.parseOptions_ = function(options) {
     hasCategories: hasCategories,
     hasScrollbars: hasScrollbars,
     hasTrashcan: hasTrashcan,
-    languageTree: tree,
-    enableRealtime: enableRealtime,
-    realtimeOptions: realtimeOptions
+    languageTree: tree
+//    enableRealtime: enableRealtime,
+//    realtimeOptions: realtimeOptions
   };
 };
 
