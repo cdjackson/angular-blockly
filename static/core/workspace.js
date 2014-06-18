@@ -30,7 +30,7 @@ goog.provide('Blockly.Workspace');
 // goog.require('Blockly.Block');
 goog.require('Blockly.ScrollbarPair');
 goog.require('Blockly.Trashcan');
-goog.require('Blockly.Xml');
+goog.require('Blockly.Json');
 
 
 /**
@@ -352,7 +352,7 @@ Blockly.Workspace.prototype.paste = function(xmlBlock) {
       this.remainingCapacity()) {
     return;
   }
-  var block = Blockly.Xml.domToBlock(this, xmlBlock);
+  var block = Blockly.Json.domToBlock(this, xmlBlock);
   // Move the duplicate to original position.
   var blockX = parseInt(xmlBlock.getAttribute('x'), 10);
   var blockY = parseInt(xmlBlock.getAttribute('y'), 10);

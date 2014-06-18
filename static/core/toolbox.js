@@ -155,25 +155,19 @@ Blockly.Toolbox.populate_ = function() {
   rootOut.removeChildren();  // Delete any existing content.
   rootOut.blocks = [];
   function syncTrees(treeIn, treeOut) {
-    for (var i = 0, childIn; childIn = treeIn.childNodes[i]; i++) {
-      if (!childIn.tagName) {
-        // Skip over text.
-        continue;
-      }
-      var name = childIn.tagName.toUpperCase();
-      if (name == 'CATEGORY') {
-        var childOut = rootOut.createNode(childIn.getAttribute('name'));
+    for (var i = 0, childIn; childIn = treeIn[i]; i++) {
+        var childOut = rootOut.createNode(childIn.name);
         childOut.blocks = [];
         treeOut.add(childOut);
-        var custom = childIn.getAttribute('custom');
-        if (custom) {
+//        var custom = childIn.getAttribute('custom');
+//        if (custom) {
           // Variables and procedures have special categories that are dynamic.
-          childOut.blocks = custom;
-        } else {
+//          childOut.blocks = custom;
+//        } else {
           syncTrees(childIn, childOut);
-        }
-      } else if (name == 'BLOCK') {
-        treeOut.blocks.push(childIn);
+//        }
+        for (var c = 0, blockIn; blockIn = childIn.blocks[c]; c++) {
+            childOut.blocks.push(blockIn);
       }
     }
   }

@@ -75,7 +75,7 @@ Blockly.parseToolboxTree_ = function(tree) {
       tree = tree.outerHTML;
     }
     if (typeof tree == 'string') {
-      tree = Blockly.Xml.textToDom(tree);
+      tree = Blockly.Json.textToDom(tree);
     }
   } else {
     tree = null;
@@ -98,8 +98,8 @@ Blockly.parseOptions_ = function(options) {
     var tree = null;
   } else {
     var tree = Blockly.parseToolboxTree_(options['toolbox']);
-    var hasCategories = Boolean(tree &&
-        tree.getElementsByTagName('category').length);
+    var hasCategories = true;//Boolean(tree &&
+//        tree.getElementsByTagName('category').length);
     var hasTrashcan = options['trashcan'];
     if (hasTrashcan === undefined) {
       hasTrashcan = hasCategories;
