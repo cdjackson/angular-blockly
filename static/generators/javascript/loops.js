@@ -132,10 +132,10 @@ Blockly.JavaScript['controls_for'] = function(block) {
       code += 'Math.abs(' + increment + ');\n';
     }
     code += 'if (' + startVar + ' > ' + endVar + ') {\n';
-    code += Blockly.JavaScript.INDENT + incVar + ' = -' + incVar +';\n';
+    code += Blockly.JavaScript.INDENT + incVar + ' = -' + incVar + ';\n';
     code += '}\n';
     code += 'for (' + variable0 + ' = ' + startVar + ';\n' +
-        '     '  + incVar + ' >= 0 ? ' +
+        '     ' + incVar + ' >= 0 ? ' +
         variable0 + ' <= ' + endVar + ' : ' +
         variable0 + ' >= ' + endVar + ';\n' +
         '     ' + variable0 + ' += ' + incVar + ') {\n' +
@@ -154,8 +154,8 @@ Blockly.JavaScript['controls_forEach'] = function(block) {
   branch = Blockly.JavaScript.addLoopTrap(branch, block.id);
   var indexVar = Blockly.JavaScript.variableDB_.getDistinctName(
       variable0 + '_index', Blockly.Variables.NAME_TYPE);
-  branch = Blockly.JavaScript.INDENT + variable0 + ' = ' + argument0 + '[' + indexVar + '];\n' +
-      branch;
+  branch = Blockly.JavaScript.INDENT + variable0 + ' = ' +
+      argument0 + '[' + indexVar + '];\n' + branch;
   var code = 'for (var ' + indexVar + ' in  ' + argument0 + ') {\n' +
       branch + '}\n';
   return code;

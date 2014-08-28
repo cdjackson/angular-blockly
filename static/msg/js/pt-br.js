@@ -2,7 +2,7 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.pt-br');
+goog.provide('Blockly.Msg.pt.br');
 
 goog.require('Blockly.Msg');
 
@@ -61,7 +61,7 @@ Blockly.Msg.CONTROLS_REPEAT_TITLE = "repita %1 vezes";
 Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT = "repita";
 Blockly.Msg.CONTROLS_REPEAT_TITLE_TIMES = "vezes";
 Blockly.Msg.CONTROLS_REPEAT_TOOLTIP = "Faça algumas instruções várias vezes.";
-Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL = "https://code.google.com/p/blockly/wiki/Repeat";  // untranslated
+Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL = "https://code.google.com/p/blockly/wiki/Loops#repeat";  // untranslated
 Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_UNTIL = "repita até";
 Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_WHILE = "repita enquanto";
 Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL = "Enquanto um valor é falso, então faça algumas instruções.";
@@ -156,7 +156,7 @@ Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE = "Retorna verdadeiro se a primeira entrad
 Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT = "Retorna verdadeiro se a primeira entrada for menor que a segunda entrada.";
 Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE = "Retorna verdadeiro se a primeira entrada for menor ou igual à segunda entrada.";
 Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ = "Retorna verdadeiro se ambas as entradas forem diferentes.";
-Blockly.Msg.LOGIC_NEGATE_HELPURL = "https://code.google.com/p/blockly/wiki/Not";  // untranslated
+Blockly.Msg.LOGIC_NEGATE_HELPURL = "https://en.wikipedia.org/wiki/Negation";  // untranslated
 Blockly.Msg.LOGIC_NEGATE_TITLE = "não %1";
 Blockly.Msg.LOGIC_NEGATE_TOOLTIP = "Retorna verdadeiro se a entrada for falsa.  Retorna falsa se a entrada for verdadeira.";
 Blockly.Msg.LOGIC_NULL = "nulo";

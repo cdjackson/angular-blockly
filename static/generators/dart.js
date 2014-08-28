@@ -29,6 +29,10 @@ goog.provide('Blockly.Dart');
 goog.require('Blockly.Generator');
 
 
+/**
+ * Dart code generator.
+ * @type !Blockly.Generator
+ */
 Blockly.Dart = new Blockly.Generator('Dart');
 
 /**
@@ -77,23 +81,21 @@ Blockly.Dart.init = function() {
   // to actual function names (to avoid collisions with user functions).
   Blockly.Dart.functionNames_ = Object.create(null);
 
-  if (Blockly.Variables) {
-    if (!Blockly.Dart.variableDB_) {
-      Blockly.Dart.variableDB_ =
-          new Blockly.Names(Blockly.Dart.RESERVED_WORDS_);
-    } else {
-      Blockly.Dart.variableDB_.reset();
-    }
-
-    var defvars = [];
-    var variables = Blockly.Variables.allVariables();
-    for (var x = 0; x < variables.length; x++) {
-      defvars[x] = 'var ' +
-          Blockly.Dart.variableDB_.getName(variables[x],
-          Blockly.Variables.NAME_TYPE) + ';';
-    }
-    Blockly.Dart.definitions_['variables'] = defvars.join('\n');
+  if (!Blockly.Dart.variableDB_) {
+    Blockly.Dart.variableDB_ =
+        new Blockly.Names(Blockly.Dart.RESERVED_WORDS_);
+  } else {
+    Blockly.Dart.variableDB_.reset();
   }
+
+  var defvars = [];
+  var variables = Blockly.Variables.allVariables();
+  for (var x = 0; x < variables.length; x++) {
+    defvars[x] = 'var ' +
+        Blockly.Dart.variableDB_.getName(variables[x],
+        Blockly.Variables.NAME_TYPE) + ';';
+  }
+  Blockly.Dart.definitions_['variables'] = defvars.join('\n');
 };
 
 /**
@@ -104,7 +106,7 @@ Blockly.Dart.init = function() {
 Blockly.Dart.finish = function(code) {
   // Indent every line.
   if (code) {
-    code = this.prefixLines(code, Blockly.Dart.INDENT);
+    code = Blockly.Dart.prefixLines(code, Blockly.Dart.INDENT);
   }
   code = 'main() {\n' + code + '}';
 
@@ -164,7 +166,7 @@ Blockly.Dart.scrub_ = function(block, code) {
     // Collect comment for this block.
     var comment = block.getCommentText();
     if (comment) {
-      commentCode += this.prefixLines(comment, '// ') + '\n';
+      commentCode += Blockly.Dart.prefixLines(comment, '// ') + '\n';
     }
     // Collect comments for all value arguments.
     // Don't collect comments for nested statements.
@@ -172,15 +174,15 @@ Blockly.Dart.scrub_ = function(block, code) {
       if (block.inputList[x].type == Blockly.INPUT_VALUE) {
         var childBlock = block.inputList[x].connection.targetBlock();
         if (childBlock) {
-          var comment = this.allNestedComments(childBlock);
+          var comment = Blockly.Dart.allNestedComments(childBlock);
           if (comment) {
-            commentCode += this.prefixLines(comment, '// ');
+            commentCode += Blockly.Dart.prefixLines(comment, '// ');
           }
         }
       }
     }
   }
   var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
-  var nextCode = this.blockToCode(nextBlock);
+  var nextCode = Blockly.Dart.blockToCode(nextBlock);
   return commentCode + code + nextCode;
 };

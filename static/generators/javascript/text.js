@@ -200,7 +200,8 @@ Blockly.JavaScript['text_changeCase'] = function(block) {
     // Title case is not a native JavaScript function.  Define one.
     var functionName = Blockly.JavaScript.provideFunction_(
         'text_toTitleCase',
-        [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(str) {',
+        [ 'function ' +
+            Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(str) {',
           '  return str.replace(/\\S+/g,',
           '      function(txt) {return txt[0].toUpperCase() + ' +
               'txt.substring(1).toLowerCase();});',
@@ -233,8 +234,20 @@ Blockly.JavaScript['text_print'] = function(block) {
 };
 
 Blockly.JavaScript['text_prompt'] = function(block) {
-  // Prompt function.
+  // Prompt function (internal message).
   var msg = Blockly.JavaScript.quote_(block.getFieldValue('TEXT'));
+  var code = 'window.prompt(' + msg + ')';
+  var toNumber = block.getFieldValue('TYPE') == 'NUMBER';
+  if (toNumber) {
+    code = 'parseFloat(' + code + ')';
+  }
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['text_prompt_ext'] = function(block) {
+  // Prompt function (external message).
+  var msg = Blockly.JavaScript.valueToCode(block, 'TEXT',
+      Blockly.JavaScript.ORDER_NONE) || '\'\'';
   var code = 'window.prompt(' + msg + ')';
   var toNumber = block.getFieldValue('TYPE') == 'NUMBER';
   if (toNumber) {

@@ -54,7 +54,7 @@
       <td colspan=2>
         <table width="100%">
           <tr id="tabRow" height="1em">
-            <td id="tab_blocks" class="tabon">{msg meaning="Code.blocks" desc="tab text - Displays and allows editing of the user's program as blocks."}Blocks{/msg}</td>
+            <td id="tab_blocks" class="tabon">{{msg meaning="Code.blocks" desc="tab text - Displays and allows editing of the user's program as blocks.\n{lb}{lb}Identical|Blocks{rb}{rb}"}}Blocks{{/msg}}</td>
             <td class="tabmin">&nbsp;</td>
             <td id="tab_javascript" class="taboff">JavaScript</td>
             <td class="tabmin">&nbsp;</td>
@@ -213,7 +213,11 @@
       <block type="text_changeCase"></block>
       <block type="text_trim"></block>
       <block type="text_print"></block>
-      <block type="text_prompt"></block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
     </category>
     <category name="{msg meaning="Apps.catLists" desc="IBID"}Lists{/msg}">
       <block type="lists_create_empty"></block>
@@ -259,22 +263,42 @@
     <category name="{msg meaning="Apps.catColour" desc="IBID"}Colour{/msg}">
       <block type="colour_picker"></block>
       <block type="colour_random"></block>
-      <block type="colour_rgb"></block>
-      <block type="colour_blend"></block>
+      <block type="colour_rgb">
+        <value name="RED">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+        <value name="COLOUR2">
+          <block type="colour_picker">
+            <field name="COLOUR">#3333ff</field>
+          </block>
+        </value>
+        <value name="RATIO">
+          <block type="math_number">
+            <field name="NUM">0.5</field>
+          </block>
+        </value>
+      </block>
     </category>
     <category name="{msg meaning="Apps.catVariables" desc="IBID"}Variables{/msg}" custom="VARIABLE"></category>
     <category name="{msg meaning="Apps.catProcedures" desc="IBID"}Functions{/msg}" custom="PROCEDURE"></category>
   </xml>
-{/template}
-
-/**
- * Readonly Blockly in an iframe.
- */
-{template .readonly}
-  {call .messages /}
-
-  <script type="text/javascript" src="../../blockly_compressed.js"></script>
-  <script type="text/javascript" src="../../blocks_compressed.js"></script>
-  <script type="text/javascript" src="../../{$ij.langSrc}"></script>
-  <div id="blockly"></div>
 {/template}

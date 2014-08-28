@@ -29,6 +29,10 @@ goog.provide('Blockly.JavaScript');
 goog.require('Blockly.Generator');
 
 
+/**
+ * JavaScript code generator.
+ * @type !Blockly.Generator
+ */
 Blockly.JavaScript = new Blockly.Generator('JavaScript');
 
 /**
@@ -109,23 +113,21 @@ Blockly.JavaScript.init = function() {
   // to actual function names (to avoid collisions with user functions).
   Blockly.JavaScript.functionNames_ = Object.create(null);
 
-  if (Blockly.Variables) {
-    if (!Blockly.JavaScript.variableDB_) {
-      Blockly.JavaScript.variableDB_ =
-          new Blockly.Names(Blockly.JavaScript.RESERVED_WORDS_);
-    } else {
-      Blockly.JavaScript.variableDB_.reset();
-    }
-
-    var defvars = [];
-    var variables = Blockly.Variables.allVariables();
-    for (var x = 0; x < variables.length; x++) {
-      defvars[x] = 'var ' +
-          Blockly.JavaScript.variableDB_.getName(variables[x],
-          Blockly.Variables.NAME_TYPE) + ';';
-    }
-    Blockly.JavaScript.definitions_['variables'] = defvars.join('\n');
+  if (!Blockly.JavaScript.variableDB_) {
+    Blockly.JavaScript.variableDB_ =
+        new Blockly.Names(Blockly.JavaScript.RESERVED_WORDS_);
+  } else {
+    Blockly.JavaScript.variableDB_.reset();
   }
+
+  var defvars = [];
+  var variables = Blockly.Variables.allVariables();
+  for (var x = 0; x < variables.length; x++) {
+    defvars[x] = 'var ' +
+        Blockly.JavaScript.variableDB_.getName(variables[x],
+        Blockly.Variables.NAME_TYPE) + ';';
+  }
+  Blockly.JavaScript.definitions_['variables'] = defvars.join('\n');
 };
 
 /**
@@ -183,7 +185,7 @@ Blockly.JavaScript.scrub_ = function(block, code) {
     // Collect comment for this block.
     var comment = block.getCommentText();
     if (comment) {
-      commentCode += this.prefixLines(comment, '// ') + '\n';
+      commentCode += Blockly.JavaScript.prefixLines(comment, '// ') + '\n';
     }
     // Collect comments for all value arguments.
     // Don't collect comments for nested statements.
@@ -191,15 +193,15 @@ Blockly.JavaScript.scrub_ = function(block, code) {
       if (block.inputList[x].type == Blockly.INPUT_VALUE) {
         var childBlock = block.inputList[x].connection.targetBlock();
         if (childBlock) {
-          var comment = this.allNestedComments(childBlock);
+          var comment = Blockly.JavaScript.allNestedComments(childBlock);
           if (comment) {
-            commentCode += this.prefixLines(comment, '// ');
+            commentCode += Blockly.JavaScript.prefixLines(comment, '// ');
           }
         }
       }
     }
   }
   var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
-  var nextCode = this.blockToCode(nextBlock);
+  var nextCode = Blockly.JavaScript.blockToCode(nextBlock);
   return commentCode + code + nextCode;
 };
