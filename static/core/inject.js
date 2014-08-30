@@ -41,22 +41,21 @@ Blockly.inject = function(container, opt_options) {
     throw 'Error: container is not in current document.';
   }
   if (opt_options) {
-    // TODO(scr): don't mix this in to global variables.
-    goog.mixin(Blockly, Blockly.parseOptions_(opt_options));
+    Blockly.parseOptions_(opt_options);
   }
   var startUi = function() {
     Blockly.createDom_(container);
     Blockly.init_();
   };
-//  if (Blockly.enableRealtime) {
-//    var realtimeElement = document.getElementById('realtime');
-//    if (realtimeElement) {
-//      realtimeElement.style.display = 'block';
-//    }
-//    Blockly.Realtime.startRealtime(startUi, container, Blockly.realtimeOptions);
-//  } else {
+  if (Blockly.enableRealtime) {
+    var realtimeElement = document.getElementById('realtime');
+    if (realtimeElement) {
+      realtimeElement.style.display = 'block';
+    }
+    Blockly.Realtime.startRealtime(startUi, container, Blockly.realtimeOptions);
+  } else {
     startUi();
-//  }
+  }
 };
 
 /**
@@ -86,7 +85,6 @@ Blockly.parseToolboxTree_ = function(tree) {
 /**
  * Configure Blockly to behave according to a set of options.
  * @param {!Object} options Dictionary of options.
- * @return {Object} Parsed options.
  * @private
  */
 Blockly.parseOptions_ = function(options) {
@@ -95,6 +93,8 @@ Blockly.parseOptions_ = function(options) {
     var hasCategories = false;
     var hasTrashcan = false;
     var hasCollapse = false;
+    var hasComments = false;
+    var hasDisable = false;
     var tree = null;
   } else {
     var tree = Blockly.parseToolboxTree_(options['toolbox']);
@@ -108,6 +108,14 @@ Blockly.parseOptions_ = function(options) {
     if (hasCollapse === undefined) {
       hasCollapse = hasCategories;
     }
+    var hasComments = options['comments'];
+    if (hasComments === undefined) {
+      hasComments = hasCategories;
+    }
+    var hasDisable = options['disable'];
+    if (hasDisable === undefined) {
+      hasDisable = hasCategories;
+    }
   }
   if (tree && !hasCategories) {
     // Scrollbars are not compatible with a non-flyout toolbox.
@@ -118,21 +126,22 @@ Blockly.parseOptions_ = function(options) {
       hasScrollbars = true;
     }
   }
-//  var enableRealtime = !!options['realtime'];
-//  var realtimeOptions = enableRealtime ? options['realtimeOptions'] : undefined;
-  return {
-    RTL: !!options['rtl'],
-    collapse: hasCollapse,
-    readOnly: readOnly,
-    maxBlocks: options['maxBlocks'] || Infinity,
-    pathToBlockly: options['path'] || './',
-    hasCategories: hasCategories,
-    hasScrollbars: hasScrollbars,
-    hasTrashcan: hasTrashcan,
-    languageTree: tree
-//    enableRealtime: enableRealtime,
-//    realtimeOptions: realtimeOptions
-  };
+  var enableRealtime = !!options['realtime'];
+  var realtimeOptions = enableRealtime ? options['realtimeOptions'] : undefined;
+
+  Blockly.RTL = !!options['rtl'];
+  Blockly.collapse = hasCollapse;
+  Blockly.comments = hasComments;
+  Blockly.disable = hasDisable;
+  Blockly.readOnly = readOnly;
+  Blockly.maxBlocks = options['maxBlocks'] || Infinity;
+  Blockly.pathToBlockly = options['path'] || './';
+  Blockly.hasCategories = hasCategories;
+  Blockly.hasScrollbars = hasScrollbars;
+  Blockly.hasTrashcan = hasTrashcan;
+  Blockly.languageTree = tree;
+  Blockly.enableRealtime = enableRealtime;
+  Blockly.realtimeOptions = realtimeOptions;
 };
 
 /**
@@ -265,7 +274,6 @@ Blockly.createDom_ = function(container) {
       Blockly.mainWorkspace.flyout_ = new Blockly.Flyout();
       var flyout = Blockly.mainWorkspace.flyout_;
       var flyoutSvg = flyout.createDom();
-      flyout.init(Blockly.mainWorkspace, true);
       flyout.autoClose = false;
       // Insert the flyout behind the workspace so that blocks appear on top.
       goog.dom.insertSiblingBefore(flyoutSvg, Blockly.mainWorkspace.svgGroup_);
@@ -311,8 +319,7 @@ Blockly.createDom_ = function(container) {
               }
               // Delete any block that's sitting on top of the flyout.
               if (block.isDeletable() && (Blockly.RTL ?
-                  blockXY.x - metrics.viewWidth :
-                  -blockXY.x) > MARGIN * 2) {
+                  blockXY.x - metrics.viewWidth : -blockXY.x) > MARGIN * 2) {
                 block.dispose(false, true);
               }
             }
@@ -351,8 +358,10 @@ Blockly.init_ = function() {
     Blockly.preloadAudio_();
   };
   // Android ignores any sound not loaded as a result of a user action.
-  soundBinds.push(Blockly.bindEvent_(document, 'mousemove', null, unbindSounds));
-  soundBinds.push(Blockly.bindEvent_(document, 'touchstart', null, unbindSounds));
+  soundBinds.push(
+      Blockly.bindEvent_(document, 'mousemove', null, unbindSounds));
+  soundBinds.push(
+      Blockly.bindEvent_(document, 'touchstart', null, unbindSounds));
 
   // Bind events for scrolling the workspace.
   // Most of these events should be bound to the SVG's surface.
@@ -361,7 +370,6 @@ Blockly.init_ = function() {
   // Also, 'keydown' has to be on the whole document since the browser doesn't
   // understand a concept of focus on the SVG image.
   Blockly.bindEvent_(Blockly.svg, 'mousedown', null, Blockly.onMouseDown_);
-  Blockly.bindEvent_(Blockly.svg, 'mousemove', null, Blockly.onMouseMove_);
   Blockly.bindEvent_(Blockly.svg, 'contextmenu', null, Blockly.onContextMenu_);
   Blockly.bindEvent_(Blockly.WidgetDiv.DIV, 'contextmenu', null,
                      Blockly.onContextMenu_);
@@ -389,7 +397,7 @@ Blockly.init_ = function() {
       Blockly.Toolbox.init();
     } else {
       // Build a fixed flyout with the root blocks.
-      Blockly.mainWorkspace.flyout_.init(Blockly.mainWorkspace, true);
+      Blockly.mainWorkspace.flyout_.init(Blockly.mainWorkspace);
       Blockly.mainWorkspace.flyout_.show(Blockly.languageTree.childNodes);
       // Translate the workspace sideways to avoid the fixed flyout.
       Blockly.mainWorkspace.scrollX = Blockly.mainWorkspace.flyout_.width_;

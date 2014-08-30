@@ -42,7 +42,7 @@ Blockly.Mutator = function(quarkNames) {
   this.quarkXml_ = [];
   // Convert the list of names into a list of XML objects for the flyout.
   for (var x = 0; x < quarkNames.length; x++) {
-    var element = {'type':quarkNames[x]};
+    var element = goog.dom.createDom('block', {'type': quarkNames[x]});
     this.quarkXml_[x] = element;
   }
 };
@@ -193,7 +193,7 @@ Blockly.Mutator.prototype.setVisible = function(visible) {
         this.createEditor_(), this.block_.svg_.svgPath_,
         this.iconX_, this.iconY_, null, null);
     var thisObj = this;
-    this.flyout_.init(this.workspace_, false);
+    this.flyout_.init(this.workspace_);
     this.flyout_.show(this.quarkXml_);
 
     this.rootBlock_ = this.block_.decompose(this.workspace_);
@@ -255,8 +255,9 @@ Blockly.Mutator.prototype.workspaceChanged_ = function() {
     for (var b = 0, block; block = blocks[b]; b++) {
       var blockXY = block.getRelativeToSurfaceXY();
       var blockHW = block.getHeightWidth();
-      if (Blockly.RTL ? blockXY.x > -this.flyout_.width_ + MARGIN :
-           blockXY.x < this.flyout_.width_ - MARGIN) {
+      if (block.isDeletable() && (Blockly.RTL ?
+            blockXY.x > -this.flyout_.width_ + MARGIN :
+            blockXY.x < this.flyout_.width_ - MARGIN)) {
         // Delete any block that's sitting on top of the flyout.
         block.dispose(false, true);
       } else if (blockXY.y + blockHW.height < MARGIN) {

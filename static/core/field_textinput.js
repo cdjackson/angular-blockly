@@ -209,7 +209,6 @@ Blockly.FieldTextInput.prototype.resizeEditor_ = function() {
     xy.x -= div.offsetWidth;
   }
   // Shift by a few pixels to line up exactly.
-  xy.x += 1;
   xy.y += 1;
   if (goog.userAgent.WEBKIT) {
     xy.y -= 3;

@@ -95,8 +95,8 @@ Blockly.Blocks['controls_whileUntil'] = {
         this.setTooltip(function () {
             var op = thisBlock.getFieldValue('MODE');
             var TOOLTIPS = {
-                WHILE: Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE,
-                UNTIL: Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL
+                'WHILE': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE,
+                'UNTIL': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL
             };
             return TOOLTIPS[op];
         });
@@ -157,15 +157,17 @@ Blockly.Blocks['controls_for'] = {
      * @this Blockly.Block
      */
     customContextMenu: function (options) {
-        var option = {enabled: true};
-        var name = this.getFieldValue('VAR');
-        option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-        var xmlField = Ext.DomHelper.createDom({tag: "field", children: name})
-        xmlField.setAttribute('name', 'VAR');
-        var xmlBlock = Ext.DomHelper.createDom({tag: "block", children: xmlField})
-        xmlBlock.setAttribute('type', 'variables_get');
-        option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-        options.push(option);
+        if (!this.isCollapsed()) {
+            var option = {enabled: true};
+            var name = this.getFieldValue('VAR');
+            option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+            var xmlField = goog.dom.createDom('field', null, name);
+            xmlField.setAttribute('name', 'VAR');
+            var xmlBlock = goog.dom.createDom('block', null, xmlField);
+            xmlBlock.setAttribute('type', 'variables_get');
+            option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+            options.push(option);
+        }
     }
 };
 
@@ -242,8 +244,8 @@ Blockly.Blocks['controls_flow_statements'] = {
         this.setTooltip(function () {
             var op = thisBlock.getFieldValue('FLOW');
             var TOOLTIPS = {
-                BREAK: Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_BREAK,
-                CONTINUE: Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_CONTINUE
+                'BREAK': Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_BREAK,
+                'CONTINUE': Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_CONTINUE
             };
             return TOOLTIPS[op];
         });

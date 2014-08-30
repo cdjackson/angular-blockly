@@ -332,14 +332,14 @@ Blockly.Block.prototype.unselect = function() {
  *     the next statement with the previous statement.  Otherwise, dispose of
  *     all children of this block.
  * @param {boolean} animate If true, show a disposal animation and sound.
- * @param {boolean} dontRemoveFromWorkspace If true, don't remove this block
- *     from the workspace's list of top blocks.
+ * @param {boolean} opt_dontRemoveFromWorkspace If true, don't remove this
+ *     block from the workspace's list of top blocks.
  */
 Blockly.Block.prototype.dispose = function(healStack, animate,
-                                           dontRemoveFromWorkspace) {
+                                           opt_dontRemoveFromWorkspace) {
   // Switch off rerendering.
   this.rendered = false;
-  this.unplug(healStack);
+  this.unplug(healStack, false);
 
   if (animate && this.svg_) {
     this.svg_.disposeUiEffect();
@@ -347,7 +347,7 @@ Blockly.Block.prototype.dispose = function(healStack, animate,
 
   // This block is now at the top of the workspace.
   // Remove this block from the workspace's list of top-most blocks.
-  if (this.workspace && !dontRemoveFromWorkspace) {
+  if (this.workspace && !opt_dontRemoveFromWorkspace) {
     this.workspace.removeTopBlock(this);
     this.workspace = null;
   }
@@ -640,7 +640,7 @@ Blockly.Block.prototype.showContextMenu_ = function(e) {
   var block = this;
   var options = [];
 
-  if (this.isDeletable() && !block.isInFlyout) {
+  if (this.isDeletable() && this.isMovable() && !block.isInFlyout) {
     // Option to duplicate this block.
     var duplicateOption = {
       text: Blockly.Msg.DUPLICATE_BLOCK,
@@ -654,7 +654,7 @@ Blockly.Block.prototype.showContextMenu_ = function(e) {
     }
     options.push(duplicateOption);
 
-    if (this.isEditable() && !this.collapsed_) {
+    if (this.isEditable() && !this.collapsed_ && Blockly.comments) {
       // Option to add/remove a comment.
       var commentOption = {enabled: true};
       if (this.comment) {
@@ -707,16 +707,18 @@ Blockly.Block.prototype.showContextMenu_ = function(e) {
       }
     }
 
-    // Option to disable/enable block.
-    var disableOption = {
-      text: this.disabled ?
-          Blockly.Msg.ENABLE_BLOCK : Blockly.Msg.DISABLE_BLOCK,
-      enabled: !this.getInheritedDisabled(),
-      callback: function() {
-        block.setDisabled(!block.disabled);
-      }
-    };
-    options.push(disableOption);
+    if (Blockly.disable) {
+      // Option to disable/enable block.
+      var disableOption = {
+        text: this.disabled ?
+            Blockly.Msg.ENABLE_BLOCK : Blockly.Msg.DISABLE_BLOCK,
+        enabled: !this.getInheritedDisabled(),
+        callback: function() {
+          block.setDisabled(!block.disabled);
+        }
+      };
+      options.push(disableOption);
+    }
 
     // Option to delete this block.
     // Count the number of blocks that are nested in this block.
@@ -841,10 +843,10 @@ Blockly.Block.prototype.onMouseMove_ = function(e) {
     if (e.type == 'mousemove' && e.clientX <= 1 && e.clientY == 0 &&
         e.button == 0) {
       /* HACK:
-       Safari Mobile 6.0 and Chrome for Android 18.0 fire rogue mousemove events
-       on certain touch actions. Ignore events with these signatures.
+       Safari Mobile 6.0 and Chrome for Android 18.0 fire rogue mousemove
+       events on certain touch actions. Ignore events with these signatures.
        This may result in a one-pixel blind spot in other browsers,
-       but this shouldn't be noticable. */
+       but this shouldn't be noticeable. */
       e.stopPropagation();
       return;
     }

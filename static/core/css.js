@@ -50,7 +50,7 @@ Blockly.Css.inject = function() {
 Blockly.Css.CONTENT = [
   '.blocklySvg {',
   '  background-color: #fff;',
-  '  border: none;',
+  '  border: 1px solid #ddd;',
   '  overflow: hidden;',  /* IE overflows by default. */
   '}',
 
@@ -128,7 +128,7 @@ Blockly.Css.CONTENT = [
   '.blocklyText {',
   '  cursor: default;',
   '  font-family: sans-serif;',
-  '  font-size: 9pt;',
+  '  font-size: 11pt;',
   '  fill: #fff;',
   '}',
 
@@ -236,7 +236,7 @@ Blockly.Css.CONTENT = [
 
   '.blocklyHtmlInput {',
   '  font-family: sans-serif;',
-  '  font-size: 9pt;',
+  '  font-size: 11pt;',
   '  border: none;',
   '  outline: none;',
   '  width: 100%',
@@ -310,7 +310,7 @@ Blockly.Css.CONTENT = [
   /* Override the default Closure URL. */
   '.blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,',
   '.blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {',
-  '  background: url(<<<PATH>>>/media/sprites.png) no-repeat 0 0 !important;',
+  '  background: url(<<<PATH>>>/media/sprites.png) no-repeat -48px -16px !important;',
   '}',
 
   /* Category tree in Toolbox. */
@@ -350,7 +350,7 @@ Blockly.Css.CONTENT = [
   '  height: 16px;',
   '  width: 16px;',
   '  vertical-align: middle;',
-  '  background-image: url(<<<PATH>>>/media/tree.png);',
+  '  background-image: url(<<<PATH>>>/media/sprites.png);',
   '}',
 
   '.blocklyTreeIconClosedLtr {',
@@ -365,10 +365,6 @@ Blockly.Css.CONTENT = [
   '  background-position: -16px -1px;',
   '}',
 
-  '.blocklyTreeIconNone {',
-  '  background-position: -48px -1px;',
-  '}',
-
   '.blocklyTreeSelected>.blocklyTreeIconClosedLtr {',
   '  background-position: -32px -17px;',
   '}',
@@ -381,14 +377,15 @@ Blockly.Css.CONTENT = [
   '  background-position: -16px -17px;',
   '}',
 
+  '.blocklyTreeIconNone,',
   '.blocklyTreeSelected>.blocklyTreeIconNone {',
-  '  background-position: -48px -17px;',
+  '  background-position: -48px -1px;',
   '}',
 
   '.blocklyTreeLabel {',
   '  cursor: default;',
   '  font-family: sans-serif;',
-  '  font-size: 12px;',
+  '  font-size: 16px;',
   '  padding: 0 3px;',
   '  vertical-align: middle;',
   '}',
@@ -472,7 +469,7 @@ Blockly.Css.CONTENT = [
   '  border-style: solid;',
   '  border-width: 1px;',
   '  cursor: default;',
-  '  font: normal 11px Arial, sans-serif;',
+  '  font: normal 13px Arial, sans-serif;',
   '  margin: 0;',
   '  outline: none;',
   '  padding: 4px 0;',
@@ -511,7 +508,7 @@ Blockly.Css.CONTENT = [
    */
   '.blocklyWidgetDiv .goog-menuitem {',
   '  color: #000;',
-  '  font: normal 11px Arial, sans-serif;',
+  '  font: normal 13px Arial, sans-serif;',
   '  list-style: none;',
   '  margin: 0;',
      /* 28px on the left for icon or checkbox; 7em on the right for shortcut. */
@@ -543,7 +540,7 @@ Blockly.Css.CONTENT = [
 
   '.blocklyWidgetDiv .goog-menuitem-content {',
   '  color: #000;',
-  '  font: normal 11px Arial, sans-serif;',
+  '  font: normal 13px Arial, sans-serif;',
   '}',
 
   /* State: disabled. */
@@ -627,7 +624,7 @@ Blockly.Css.CONTENT = [
 
   '.blocklyWidgetDiv .goog-menuitem-mnemonic-separator {',
   '  color: #999;',
-  '  font-size: 10px;',
+  '  font-size: 12px;',
   '  padding-left: 4px;',
   '}',
 

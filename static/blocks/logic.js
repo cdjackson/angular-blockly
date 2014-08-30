@@ -303,12 +303,12 @@ Blockly.Blocks['logic_compare'] = {
         this.setTooltip(function () {
             var op = thisBlock.getFieldValue('OP');
             var TOOLTIPS = {
-                EQ: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
-                NEQ: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
-                LT: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
-                LTE: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
-                GT: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
-                GTE: Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
+                'EQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
+                'NEQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
+                'LT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
+                'LTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
+                'GT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
+                'GTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
             };
             return TOOLTIPS[op];
         });
@@ -321,7 +321,7 @@ Blockly.Blocks['logic_operation'] = {
      * @this Blockly.Block
      */
     init: function () {
-        this.OPERATORS =
+        var OPERATORS =
             [
                 [Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
                 [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']
@@ -341,8 +341,8 @@ Blockly.Blocks['logic_operation'] = {
         this.setTooltip(function () {
             var op = thisBlock.getFieldValue('OP1');
             var TOOLTIPS = {
-                AND: Blockly.Msg.LOGIC_OPERATION_TOOLTIP_AND,
-                OR: Blockly.Msg.LOGIC_OPERATION_TOOLTIP_OR
+                'AND': Blockly.Msg.LOGIC_OPERATION_TOOLTIP_AND,
+                'OR': Blockly.Msg.LOGIC_OPERATION_TOOLTIP_OR
             };
             return TOOLTIPS[op];
         });

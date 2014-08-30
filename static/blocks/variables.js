@@ -80,9 +80,9 @@ Blockly.Blocks['variables_get'] = {
         var option = {enabled: true};
         var name = this.getFieldValue('VAR');
         option.text = this.contextMenuMsg_.replace('%1', name);
-        var xmlField = Ext.DomHelper.createDom({tag: "field", children: name})
+        var xmlField = goog.dom.createDom('field', null, name);
         xmlField.setAttribute('name', 'VAR');
-        var xmlBlock = Ext.DomHelper.createDom({tag: "block", children: xmlField})
+        var xmlBlock = goog.dom.createDom('block', null, xmlField);
         xmlBlock.setAttribute('type', this.contextMenuType_);
         option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
         options.push(option);

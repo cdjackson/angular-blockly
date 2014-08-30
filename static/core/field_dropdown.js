@@ -33,6 +33,7 @@ goog.require('goog.dom');
 goog.require('goog.style');
 goog.require('goog.ui.Menu');
 goog.require('goog.ui.MenuItem');
+goog.require('goog.userAgent');
 
 
 /**
@@ -55,11 +56,10 @@ Blockly.FieldDropdown = function(menuGenerator, opt_changeHandler) {
   this.value_ = firstTuple[1];
 
   // Add dropdown arrow: "option ▾" (LTR) or "▾ אופציה" (RTL)
-  // Android can't (in 2014) display "▾", so use "▼" instead.
-  var arrowChar = goog.userAgent.ANDROID ? '\u25BC' : '\u25BE';
   this.arrow_ = Blockly.createSvgElement('tspan', {}, null);
   this.arrow_.appendChild(document.createTextNode(
-      Blockly.RTL ? arrowChar + ' ' : ' ' + arrowChar));
+      Blockly.RTL ? Blockly.FieldDropdown.ARROW_CHAR + ' ' :
+                    ' ' + Blockly.FieldDropdown.ARROW_CHAR));
 
   // Call parent's constructor.
   Blockly.FieldDropdown.superClass_.constructor.call(this, firstTuple[0]);
@@ -70,6 +70,11 @@ goog.inherits(Blockly.FieldDropdown, Blockly.Field);
  * Horizontal distance that a checkmark ovehangs the dropdown.
  */
 Blockly.FieldDropdown.CHECKMARK_OVERHANG = 25;
+
+/**
+ * Android can't (in 2014) display "▾", so use "▼" instead.
+ */
+Blockly.FieldDropdown.ARROW_CHAR = goog.userAgent.ANDROID ? '\u25BC' : '\u25BE';
 
 /**
  * Clone this FieldDropdown.
@@ -122,7 +127,24 @@ Blockly.FieldDropdown.prototype.showEditor_ = function() {
     menu.addChild(menuItem, true);
     menuItem.setChecked(value == this.value_);
   }
+  // Listen for mouse/keyboard events.
   goog.events.listen(menu, goog.ui.Component.EventType.ACTION, callback);
+  // Listen for touch events (why doesn't Closure handle this already?).
+  function callbackTouchStart(e) {
+    var control = this.getOwnerControl(/** @type {Node} */ (e.target));
+    // Highlight the menu item.
+    control.handleMouseDown(e);
+  }
+  function callbackTouchEnd(e) {
+    var control = this.getOwnerControl(/** @type {Node} */ (e.target));
+    // Activate the menu item.
+    control.performActionInternal(e);
+  }
+  menu.getHandler().listen(menu.getElement(), goog.events.EventType.TOUCHSTART,
+                           callbackTouchStart);
+  menu.getHandler().listen(menu.getElement(), goog.events.EventType.TOUCHEND,
+                           callbackTouchEnd);
+
   // Record windowSize and scrollOffset before adding menu.
   var windowSize = goog.dom.getViewportSize();
   var scrollOffset = goog.style.getViewportPageOffset(document);
