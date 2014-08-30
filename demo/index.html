@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="demoApp">
+<head>
+    <title>Angular Blockly Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="../src/angular-blockly.js"></script>
+    <script src="../static/blockly_compressed.js"></script>
+    <script src="../static/blocks_compressed.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="demo.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body ng-controller="DemoCtrl">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>ngBlockly - AngularJS Directive</h3>
+
+            <p>A LESS style sheet is provided that allows use with Bootstrap themes.</p>
+        </div>
+        <div class="col-md-8">
+            <ng-blockly style="height:450px;"
+                    >
+            </ng-blockly>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var demoApp = angular.module('demoApp', [
+        "angular-blockly"
+    ]);
+
+    demoApp.controller('DemoCtrl', function ($scope) {
+
+
+    });
+</script>
+</body>
+</html>
