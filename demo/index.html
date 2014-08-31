@@ -6,8 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="../src/angular-blockly.js"></script>
-    <script src="../static/blockly_compressed.js"></script>
-    <script src="../static/blocks_compressed.js"></script>
+    <script src="../blockly/blockly_uncompressed.js"></script>
+    <script src="../blockly/blocks_compressed.js"></script>
+    <script src="../blockly/msg/js/en.js"></script>
 
     <link rel="stylesheet" type="text/css" href="demo.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -21,9 +22,11 @@
             <p>A LESS style sheet is provided that allows use with Bootstrap themes.</p>
         </div>
         <div class="col-md-8">
-            <ng-blockly style="height:450px;"
+            <div style="height:300px; background-color: black;">
+            <ng-blockly
                     >
             </ng-blockly>
+                </div>
         </div>
     </div>
 </div>
