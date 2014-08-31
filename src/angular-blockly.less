@@ -1,6 +1,10 @@
+@blockly-sprites: "sprites.png";
+
+
 .blocklySvg {
-  background-color: transparent;
-  border: 1px solid #ddd;
+  background-color: @panel-bg;
+  border: 1px solid @panel-default-border;
+  border-radius: @panel-border-radius;
   overflow: hidden;  /* IE overflows by default. */
 }
 
@@ -11,12 +15,12 @@
 }
 
 .blocklyDraggable {
-/*
-  Hotspot coordinates are baked into the CUR file, but they are still
-  required in the CSS due to a Chrome bug.
-  http://code.google.com/p/chromium/issues/detail?id=1446
-*/
-  cursor: url(<<<PATH>>>/media/handopen.cur) 8 5, auto;
+  /*
+    Hotspot coordinates are baked into the CUR file, but they are still
+    required in the CSS due to a Chrome bug.
+    http://code.google.com/p/chromium/issues/detail?id=1446
+  */
+  cursor: url(handopen.cur) 8 5, auto;
 }
 
 .blocklyResizeSE {
@@ -77,9 +81,9 @@
 
 .blocklyText {
   cursor: default;
-  font-family: sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: 11pt;
-  fill: #fff;
+  fill: @text-color;
 }
 
 .blocklyNonEditableText>text {
@@ -88,7 +92,7 @@
 
 .blocklyNonEditableText>rect,
 .blocklyEditableText>rect {
-  fill: #fff;
+  fill: @text-color;
   fill-opacity: .6;
 }
 
@@ -193,13 +197,13 @@
 }
 
 .blocklyMutatorBackground {
-  fill: #fff;
+  fill: @panel-bg;//#fff;
   stroke-width: 1;
   stroke: #ddd;
 }
 
 .blocklyFlyoutBackground {
-  fill: #ddd;
+  fill: @dropdown-bg;
   fill-opacity: .8;
 }
 
@@ -208,9 +212,9 @@
 }
 
 .blocklyScrollbarBackground {
-  fill: transparent;
+  fill: @panel-bg;
   stroke-width: 1;
-  stroke: #e4e4e4;
+  stroke: @panel-inner-border;
 }
 
 .blocklyScrollbarKnob {
@@ -260,12 +264,13 @@
 /* Override the default Closure URL. */
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
-  background: url(<<<PATH>>>/media/sprites.png) no-repeat -48px -16px !important;
+  background: url(@blockly-sprites) no-repeat -48px -16px !important;
 }
 
 /* Category tree in Toolbox. */
 .blocklyToolboxDiv {
-  background-color: #ddd;
+  background-color: @navbar-default-bg;
+  border-radius: @panel-border-radius 0px 0px @panel-border-radius;
   display: none;
   overflow-x: visible;
   overflow-y: auto;
@@ -293,14 +298,15 @@
 }
 
 .blocklyTreeRow:hover {
-  background-color: #e4e4e4;
+  color: @navbar-default-link-hover-color;
+  background-color: @navbar-default-link-hover-bg;
 }
 
 .blocklyTreeIcon {
   height: 16px;
   width: 16px;
   vertical-align: middle;
-  background-image: url(<<<PATH>>>/media/sprites.png);
+  background-image: url(@blockly-sprites);
 }
 
 .blocklyTreeIconClosedLtr {
@@ -334,18 +340,18 @@
 
 .blocklyTreeLabel {
   cursor: default;
-  font-family: sans-serif;
-  font-size: 16px;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
   padding: 0 3px;
   vertical-align: middle;
 }
 
 .blocklyTreeSelected  {
-  background-color: #57e !important;
+  background-color: @navbar-default-link-active-bg !important;
 }
 
 .blocklyTreeSelected .blocklyTreeLabel {
-  color: #fff;
+  color: @navbar-default-link-active-color;
 }
 
 /* Copied from: goog/css/colorpicker-simplegrid.css */
@@ -414,8 +420,8 @@
  */
 
 .blocklyWidgetDiv .goog-menu {
-  background: #fff;
-  border-color: #ccc #666 #666 #ccc;
+  background: @dropdown-bg;
+  border-color: @dropdown-border;
   border-style: solid;
   border-width: 1px;
   cursor: default;
@@ -457,11 +463,11 @@
  * #noflip to .goog-menuitem.
  */
 .blocklyWidgetDiv .goog-menuitem {
-  color: #000;
+  color: @dropdown-link-color;
   font: normal 13px Arial, sans-serif;
   list-style: none;
   margin: 0;
-/* 28px on the left for icon or checkbox; 7em on the right for shortcut. */
+  /* 28px on the left for icon or checkbox; 7em on the right for shortcut. */
   padding: 4px 7em 4px 28px;
   white-space: nowrap;
 }
@@ -469,7 +475,7 @@
 /* BiDi override for the resting state. */
 /* #noflip */
 .blocklyWidgetDiv .goog-menuitem.goog-menuitem-rtl {
-/* Flip left/right padding for BiDi. */
+  /* Flip left/right padding for BiDi. */
   padding-left: 7em;
   padding-right: 28px;
 }
@@ -489,14 +495,14 @@
 }
 
 .blocklyWidgetDiv .goog-menuitem-content {
-  color: #000;
+  color: @dropdown-link-color;
   font: normal 13px Arial, sans-serif;
 }
 
 /* State: disabled. */
 .blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-accel,
 .blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-content {
-  color: #ccc !important;
+  color: @dropdown-link-disabled-color !important;
 }
 
 .blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-icon {
@@ -508,14 +514,15 @@
 /* State: hover. */
 .blocklyWidgetDiv .goog-menuitem-highlight,
 .blocklyWidgetDiv .goog-menuitem-hover {
-  background-color: #d6e9f8;
-/* Use an explicit top and bottom border so that the selection is visible',
- * in high contrast mode. */
-  border-color: #d6e9f8;
-  border-style: dotted;
-  border-width: 1px 0;
-  padding-bottom: 3px;
-  padding-top: 3px;
+  background-color: @dropdown-link-hover-bg;
+  color: @dropdown-link-hover-color;
+  /* Use an explicit top and bottom border so that the selection is visible',
+   * in high contrast mode. */
+  //  border-color: #d6e9f8;
+  //  border-style: dotted;
+  //  border-width: 1px 0;
+  //  padding-bottom: 3px;
+  //  padding-top: 3px;
 }
 
 /* State: selected/checked. */
@@ -534,22 +541,22 @@
 /* #noflip */
 .blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-checkbox,
 .blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-icon {
-/* Flip left/right positioning. */
+  /* Flip left/right positioning. */
   left: auto;
   right: 6px;
 }
 
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
-/* Client apps may override the URL at which they serve the sprite. */
+  /* Client apps may override the URL at which they serve the sprite. */
   background: url(//ssl.gstatic.com/editor/editortoolbar.png) no-repeat -512px 0;
 }
 
 /* Keyboard shortcut ("accelerator") style. */
 .blocklyWidgetDiv .goog-menuitem-accel {
   color: #999;
-/* Keyboard shortcuts are untranslated; always left-to-right. */
-/* #noflip */
+  /* Keyboard shortcuts are untranslated; always left-to-right. */
+  /* #noflip */
   direction: ltr;
   left: auto;
   padding: 0 6px;
@@ -561,7 +568,7 @@
 /* BiDi override for shortcut style. */
 /* #noflip */
 .blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-accel {
-/* Flip left/right positioning and text alignment. */
+  /* Flip left/right positioning and text alignment. */
   left: 0;
   right: auto;
   text-align: left;
@@ -593,7 +600,7 @@
  */
 
 .blocklyWidgetDiv .goog-menuseparator {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid @dropdown-divider-bg; //#ccc;
   margin: 4px 0;
   padding: 0;
 }
