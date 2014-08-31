@@ -43,14 +43,14 @@ Blockly.Trashcan = function(workspace) {
  * @type {string}
  * @private
  */
-Blockly.Trashcan.prototype.SPRITE_URL_ = 'media/sprites.png';
+Blockly.Trashcan.prototype.SPRITE_URL_ = 'sprites.png';
 
 /**
  * URL of the lid image.
  * @type {string}
  * @private
  */
-Blockly.Trashcan.prototype.LID_URL_ = 'media/trashlid.png';
+Blockly.Trashcan.prototype.LID_URL_ = 'trashlid.png';
 
 /**
  * Width of both the trash can and lid images.

@@ -47,7 +47,7 @@ goog.require('rtclient');
  * @type {string}
  * @private
  */
-Blockly.Realtime.PROGRESS_URL_ = 'media/progress.gif';
+Blockly.Realtime.PROGRESS_URL_ = 'progress.gif';
 
 /**
  * Is realtime collaboration enabled?
@@ -152,14 +152,14 @@ Blockly.Realtime.redoElementId_ = null;
  * @type {string}
  * @private
  */
-Blockly.Realtime.PROGRESS_URL_ = 'media/progress.gif';
+Blockly.Realtime.PROGRESS_URL_ = 'progress.gif';
 
 /**
  * URL of the anonymous user image.
  * @type {string}
  * @private
  */
-Blockly.Realtime.ANONYMOUS_URL_ = 'media/anon.jpeg';
+Blockly.Realtime.ANONYMOUS_URL_ = 'anon.jpeg';
 
 /**
  * This function is called the first time that the Realtime model is created

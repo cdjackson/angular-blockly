@@ -420,9 +420,9 @@ Blockly.init_ = function() {
 
   // Load the sounds.
   Blockly.loadAudio_(
-      ['media/click.mp3', 'media/click.wav', 'media/click.ogg'], 'click');
+      ['click.mp3', 'click.wav', 'click.ogg'], 'click');
   Blockly.loadAudio_(
-      ['media/delete.mp3', 'media/delete.ogg', 'media/delete.wav'], 'delete');
+      ['delete.mp3', 'delete.ogg', 'delete.wav'], 'delete');
 };
 
 /**

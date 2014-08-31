@@ -92,7 +92,7 @@ Blockly.HSV_VALUE = 0.65;
 Blockly.SPRITE = {
   width: 64,
   height: 92,
-  url: 'media/sprites.png'
+  url: 'sprites.png'
 };
 
 /**
@@ -635,7 +635,7 @@ Blockly.setCursorHand_ = function(closed) {
      http://code.google.com/p/chromium/issues/detail?id=1446 */
   var cursor = '';
   if (closed) {
-    cursor = 'url(' + Blockly.pathToBlockly + 'media/handclosed.cur) 7 3, auto';
+    cursor = 'url(' + Blockly.pathToBlockly + 'handclosed.cur) 7 3, auto';
   }
   if (Blockly.selected) {
     Blockly.selected.getSvgRoot().style.cursor = cursor;

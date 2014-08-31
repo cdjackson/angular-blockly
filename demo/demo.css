@@ -16,7 +16,7 @@
       required in the CSS due to a Chrome bug.
       http://code.google.com/p/chromium/issues/detail?id=1446
     */
-    cursor: url(<<<PATH>>>/media/handopen.cur) 8 5, auto;
+    cursor: url(../blockly/media/handopen.cur) 8 5, auto;
 }
 
 .blocklyResizeSE {
@@ -260,7 +260,7 @@
 /* Override the default Closure URL. */
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
 .blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
-    background: url(<<<PATH>>>/media/sprites.png) no-repeat -48px -16px !important;
+    background: url(../blockly/media/sprites.png) no-repeat -48px -16px !important;
 }
 
 /* Category tree in Toolbox. */
@@ -300,7 +300,7 @@
     height: 16px;
     width: 16px;
     vertical-align: middle;
-    background-image: url(<<<PATH>>>/media/sprites.png);
+    background-image: url(../blockly/media/sprites.png);
 }
 
 .blocklyTreeIconClosedLtr {
