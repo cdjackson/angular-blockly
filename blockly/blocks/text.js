@@ -106,9 +106,9 @@ Blockly.Blocks['text_join'] = {
         if (this.itemCount_ == 0) {
             this.appendDummyInput('EMPTY')
                 .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
-                    'media/quote0.png', 12, 12, '"'))
+                    'quote0.png', 12, 12, '"'))
                 .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
-                    'media/quote1.png', 12, 12, '"'));
+                    'quote1.png', 12, 12, '"'));
         }
     },
     /**
@@ -163,9 +163,9 @@ Blockly.Blocks['text_join'] = {
         if (this.itemCount_ == 0) {
             this.appendDummyInput('EMPTY')
                 .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
-                    'media/quote0.png', 12, 12, '"'))
+                    'quote0.png', 12, 12, '"'))
                 .appendField(new Blockly.FieldImage(Blockly.pathToBlockly +
-                    'media/quote1.png', 12, 12, '"'));
+                    'quote1.png', 12, 12, '"'));
         }
     },
     /**
