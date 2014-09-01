@@ -44,6 +44,8 @@ Blockly.Blocks['procedures_defnoreturn'] = {
             .appendField(new Blockly.FieldTextInput(name,
                 Blockly.Procedures.rename), 'NAME')
             .appendField('', 'PARAMS');
+        this.appendStatementInput('STACK')
+            .appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
         this.setMutator(new Blockly.Mutator(['procedures_mutatorarg']));
         this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
         this.arguments_ = [];
@@ -106,11 +108,12 @@ Blockly.Blocks['procedures_defnoreturn'] = {
      * @this Blockly.Block
      */
     mutationToDom: function () {
-        var container = document.createElement('mutation');
+        var container = [];
         for (var x = 0; x < this.arguments_.length; x++) {
-            var parameter = document.createElement('arg');
-            parameter.setAttribute('name', this.arguments_[x]);
-            container.appendChild(parameter);
+            var parameter = {};
+            parameter.name = 'arg';
+            parameter.value = this.arguments_[x];
+            container.push(parameter);
         }
 
         // Save whether the statement input is visible.
@@ -126,9 +129,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
      */
     domToMutation: function (xmlElement) {
         this.arguments_ = [];
-        for (var x = 0, childNode; childNode = xmlElement.childNodes[x]; x++) {
-            if (childNode.nodeName.toLowerCase() == 'arg') {
-                this.arguments_.push(childNode.getAttribute('name'));
+        var elements = [].concat(xmlElement);
+        for (var x = 0; x < elements.length; x++) {
+            if (elements[x].name.toLowerCase() == 'arg') {
+                this.arguments_.push(elements[x].value);
+
             }
         }
         this.updateParams_();

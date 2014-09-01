@@ -321,7 +321,7 @@ Blockly.Blocks['logic_operation'] = {
      * @this Blockly.Block
      */
     init: function () {
-        var OPERATORS =
+        this.OPERATORS =
             [
                 [Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
                 [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']
