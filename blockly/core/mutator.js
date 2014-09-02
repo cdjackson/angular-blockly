@@ -42,8 +42,8 @@ Blockly.Mutator = function(quarkNames) {
   this.quarkXml_ = [];
   // Convert the list of names into a list of XML objects for the flyout.
   for (var x = 0; x < quarkNames.length; x++) {
-    var element = goog.dom.createDom('block', {'type': quarkNames[x]});
-    this.quarkXml_[x] = element;
+//    var element = goog.dom.createDom('block', {'type': quarkNames[x]});
+    this.quarkXml_[x] = {'type': quarkNames[x]};//element;
   }
 };
 goog.inherits(Blockly.Mutator, Blockly.Icon);

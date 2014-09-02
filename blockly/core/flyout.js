@@ -28,6 +28,7 @@ goog.provide('Blockly.Flyout');
 
 goog.require('Blockly.Block');
 goog.require('Blockly.Comment');
+goog.require('Blockly.Xml');
 goog.require('goog.userAgent');
 
 
