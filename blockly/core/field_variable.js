@@ -136,31 +136,42 @@ Blockly.FieldVariable.dropdownCreate = function() {
  *     handled (rename), or undefined if an existing variable was chosen.
  * @this {!Blockly.FieldVariable}
  */
-Blockly.FieldVariable.dropdownChange = function(text) {
-  function promptName(promptText, defaultText) {
+Blockly.FieldVariable.dropdownChange = function(inputText) {
     Blockly.hideChaff();
-    var newVar = window.prompt(promptText, defaultText);
-    // Merge runs of whitespace.  Strip leading and trailing whitespace.
-    // Beyond this, all names are legal.
-    return newVar && newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
-  }
-  if (text == Blockly.Msg.RENAME_VARIABLE) {
-    var oldVar = this.getText();
-    text = promptName(Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar),
-                      oldVar);
-    if (text) {
-      Blockly.Variables.renameVariable(oldVar, text);
+
+    var thisField = this;
+    var oldVar = "";
+    var promptText;
+    if (inputText == Blockly.Msg.RENAME_VARIABLE) {
+        oldVar = this.getText();
+        promptText = Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar);
     }
-    return null;
-  } else if (text == Blockly.Msg.NEW_VARIABLE) {
-    text = promptName(Blockly.Msg.NEW_VARIABLE_TITLE, '');
-    // Since variables are case-insensitive, ensure that if the new variable
-    // matches with an existing variable, the new case prevails throughout.
-    if (text) {
-      Blockly.Variables.renameVariable(text, text);
-      return text;
+    else if (inputText != Blockly.Msg.NEW_VARIABLE) {
+        this.setText(inputText);
     }
+    else {
+        promptText = Blockly.Msg.NEW_VARIABLE_TITLE;
+    }
+
+    if(Blockly.renameVariableCallback !== undefined) {
+        Blockly.renameVariableCallback(promptText, oldVar, completeRename);
+    }
+    else {
+        var newText = window.prompt(promptText, oldVar);
+        if (newText) {
+            completeRename(newText);
+        }
+    }
+
     return null;
-  }
-  return undefined;
+
+    function completeRename(newVar) {
+        // Merge runs of whitespace.  Strip leading and trailing whitespace.
+        // Beyond this, all names are legal.
+        newVar && newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
+
+        Blockly.Variables.renameVariable(oldVar, newVar);
+        thisField.setText(newVar);
+    }
 };
+

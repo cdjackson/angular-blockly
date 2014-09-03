@@ -6,6 +6,7 @@
  * License: MIT
  */
 angular.module("angular-blockly", [
+    'ui.bootstrap.modal'
 ])
     .provider("ngBlockly", function() {
         this.options = {};
@@ -24,7 +25,7 @@ angular.module("angular-blockly", [
         };
     })
 
-    .directive('ngBlockly', function ($window, $timeout, ngBlockly) {
+    .directive('ngBlockly', function ($window, $timeout, ngBlockly, $modal) {
         return {
             restrict: 'E',
             scope: { // Isolate scope
@@ -38,6 +39,8 @@ angular.module("angular-blockly", [
                     {
                         path: 'assets/',
                         trashcan: true,
+                        renameVariableCallback: function(a,b,callback) {
+                        },
                         toolbox: [
                             {
                                 name: "Logic",
@@ -106,6 +109,9 @@ angular.module("angular-blockly", [
                     }, 500);
                     Blockly.Json.setWorkspace(Blockly.getMainWorkspace(), $scope.ngModel);
                 });*/
+
             }
         };
     });
+
+
