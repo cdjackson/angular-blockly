@@ -142,6 +142,8 @@ Blockly.parseOptions_ = function(options) {
   Blockly.languageTree = tree;
   Blockly.enableRealtime = enableRealtime;
   Blockly.realtimeOptions = realtimeOptions;
+
+  Blockly.renameVariableCallback = options.renameVariableCallback;
 };
 
 /**

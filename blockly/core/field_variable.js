@@ -108,7 +108,7 @@ Blockly.FieldVariable.prototype.setValue = function(text) {
  * @this {!Blockly.FieldVariable}
  */
 Blockly.FieldVariable.dropdownCreate = function() {
-  var variableList = Blockly.Variables.allVariables();
+  var variableList = Blockly.Variables.allVariables(this.name);
   // Ensure that the currently selected variable is an option.
   var name = this.getText();
   if (name && variableList.indexOf(name) == -1) {
@@ -148,6 +148,7 @@ Blockly.FieldVariable.dropdownChange = function(inputText) {
     }
     else if (inputText != Blockly.Msg.NEW_VARIABLE) {
         this.setText(inputText);
+        return;
     }
     else {
         promptText = Blockly.Msg.NEW_VARIABLE_TITLE;
@@ -170,7 +171,7 @@ Blockly.FieldVariable.dropdownChange = function(inputText) {
         // Beyond this, all names are legal.
         newVar && newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
 
-        Blockly.Variables.renameVariable(oldVar, newVar);
+        Blockly.Variables.renameVariable(thisField.name, oldVar, newVar);
         thisField.setText(newVar);
     }
 };

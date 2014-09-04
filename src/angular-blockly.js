@@ -39,8 +39,8 @@ angular.module("angular-blockly", [
                     {
                         path: 'assets/',
                         trashcan: true,
-                        renameVariableCallback: function(a,b,callback) {
-                        },
+//                        renameVariableCallback: function(a,b,callback) {
+  //                      },
                         toolbox: [
                             {
                                 name: "Logic",

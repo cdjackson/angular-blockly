@@ -44,7 +44,7 @@ Blockly.Variables.NAME_TYPE = 'VARIABLE';
  * @param {Blockly.Block=} opt_block Optional root block.
  * @return {!Array.<string>} Array of variable names.
  */
-Blockly.Variables.allVariables = function(opt_block) {
+Blockly.Variables.allVariables = function(varType, opt_block) {
   var blocks;
   if (opt_block) {
     blocks = opt_block.getDescendants();
@@ -56,7 +56,7 @@ Blockly.Variables.allVariables = function(opt_block) {
   for (var x = 0; x < blocks.length; x++) {
     var func = blocks[x].getVars;
     if (func) {
-      var blockVariables = func.call(blocks[x]);
+      var blockVariables = func.call(blocks[x], varType);
       for (var y = 0; y < blockVariables.length; y++) {
         var varName = blockVariables[y];
         // Variable name may be null if the block is only half-built.
@@ -79,13 +79,13 @@ Blockly.Variables.allVariables = function(opt_block) {
  * @param {string} oldName Variable to rename.
  * @param {string} newName New variable name.
  */
-Blockly.Variables.renameVariable = function(oldName, newName) {
+Blockly.Variables.renameVariable = function(varType, oldName, newName) {
   var blocks = Blockly.mainWorkspace.getAllBlocks();
   // Iterate through every block.
   for (var x = 0; x < blocks.length; x++) {
     var func = blocks[x].renameVar;
     if (func) {
-      func.call(blocks[x], oldName, newName);
+      func.call(blocks[x], varType, oldName, newName);
     }
   }
 };
