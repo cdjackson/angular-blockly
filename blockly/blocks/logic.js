@@ -403,7 +403,6 @@ Blockly.Blocks['logic_operation'] = {
         // Disconnect all the input blocks and remove the inputs.
         for (var x = this.opCount_; x > 0; x--) {
             this.removeInput('IN' + (x + 1));
-            this.removeInput('OP' + (x + 1));
         }
         this.opCount_ = 0;
         // Rebuild the block's optional inputs.
