@@ -2,8 +2,12 @@
 <html ng-app="demoApp">
 <head>
     <title>Angular Blockly Demo</title>
+    <link rel="stylesheet" type="text/css" href="demo.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="../src/angular-blockly.js"></script>
     <script src="../blockly/blockly_uncompressed.js"></script>
@@ -17,9 +21,6 @@
     <script src="../blockly/blocks/colour.js"></script>
     <script src="../blockly/msg/js/en.js"></script>
     <script src="openhabBlocks.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="demo.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body ng-controller="DemoCtrl">
 <div class="container">
@@ -28,13 +29,13 @@
             <h3>ngBlockly - AngularJS Directive</h3>
 
             <p>A LESS style sheet is provided that allows use with Bootstrap themes.</p>
+
+            <textarea rows="50" cols="60" id="source"></textarea>
         </div>
         <div class="col-md-8">
             <div style="height:300px; background-color: black;">
-            <ng-blockly
-                    >
-            </ng-blockly>
-                </div>
+                <ng-blockly></ng-blockly>
+            </div>
         </div>
     </div>
 </div>
@@ -44,10 +45,47 @@
         "angular-blockly"
     ]);
 
-    demoApp.controller('DemoCtrl', function ($scope) {
-
-
+    demoApp.config(function myAppConfig(ngBlocklyProvider) {
+        ngBlocklyProvider.setOptions({
+            path: "../blockly/media/",
+            trashcan: true,
+            toolbox: [
+                {
+                    name: "Logic",
+                    blocks: [
+                        {type: "logic_compare"},
+                        {type: "logic_operation"},
+                        {type: "logic_negate"},
+                        {type: "controls_if"},
+                        {type: "logic_boolean"}
+                    ]
+                },
+                {
+                    name: "Math",
+                    blocks: [
+                        {type: "math_number"},
+                        {type: "math_arithmetic"},
+                        {type: "math_round"},
+                        {type: "math_constrain"},
+                        {type: "math_constant"},
+                        {type: "math_trig"},
+                        {type: "math_number_property"},
+                        {type: "math_change"}
+                    ]
+                }
+            ]
+        });
     });
+
+    demoApp.controller('DemoCtrl', function ($scope, $timeout, Blockly) {
+        // This is wrapped in timeout to allow the directive to load.
+        $timeout(function () {
+            Blockly.onChange(function (workspace) {
+                document.getElementById('source').innerHTML = angular.toJson(workspace, true);
+            });
+        }, 0);
+    });
+
 </script>
 </body>
 </html>
