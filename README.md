@@ -21,14 +21,15 @@ A ngBlockly provider to allow configuration. From your startup code, you can cal
 ```
 to set the blockly options
 
-A Blockly service. This is the main way to interact with the blockly library. The service is a singleton, so this does
-assume that there's only one design on the screen at once.
+A Blockly service. This is the main way to interact with the blockly library. The service is a singleton, so this does assume that there's only one design on the screen at once.
 The following methods are available
 
-```setWorkspace``` Sets the current workspace.
-```clearWorkspace``` Clears the current workspace.
-```getWorkspace``` Gets the current workspace.
-```onChange``` Sets a change callback that is called when the workspace changes.
+Method  | Description
+------------- | -------------
+```setWorkspace```  | Sets the current workspace.
+```clearWorkspace```   | Clears the current workspace.
+```getWorkspace```   | Gets the current workspace.
+```onChange```   | Sets a change callback that is called when the workspace changes.
 
 The ```ng-blockly``` directive, which must be defined as an element.
 
